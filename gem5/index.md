@@ -18,6 +18,9 @@ sudo apt install build-essential git m4 scons zlib1g zlib1g-dev libprotobuf-dev 
 ```
 For other OS's or more information, click [here](http://gem5.org/Compiling_M5#Required_Software)
 ## Event-driven architecture 
-Gem5 is event driven. That is, to run an object you must trigger an event to do so. In Gem5, there is a general event queue that includes all events. Remember, only SimObject can be triggered and enqueued in the event queue.  For more info, click [here](here). 
+Gem5 is an event driven application. To run object `X`, you must trigger an event to wakeup `X`. There is a general event queue that includes all events during runtime. An object can be triggered only if it is a SimObject. For more info, click [here](here).
+
+## Build simulator 
+
 
 
