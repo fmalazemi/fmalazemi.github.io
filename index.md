@@ -4,8 +4,7 @@ Tutorials on imaging, computing and mathematics
 ###############################################
 
 Mathematics
-
-* :doc:`notation`;
+[gem5.md](Gem5 Tutorial)
 * :doc:`some_sums`;
 * :doc:`angle_sum`;
 * :doc:`rotation_2d`;
