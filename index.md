@@ -4,7 +4,6 @@ Tutorials on imaging, computing and mathematics
 ###############################################
 
 Mathematics
-===========
 
 * :doc:`notation`;
 * :doc:`some_sums`;
