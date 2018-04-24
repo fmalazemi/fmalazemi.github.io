@@ -1,4 +1,5 @@
 # Part 1: What is Gem5
+###### [Part 2](build_and_run)
 GEM5 is a simulator dedicated for computer architecture research communities. It  encompasses system and process level microarchitecture. 
 ## Credit 
 Gem5 is a merge of the best aspects of M5 and GEM5. The project is a result of joint efforts of many companies and schools (AMD, ARM, HP, MIPS, Princeton, MIT, uTexas, wisc, and umich.)
