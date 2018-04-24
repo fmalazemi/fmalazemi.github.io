@@ -1,5 +1,5 @@
 # Part 4: Garnet 
-###### [Part 3](debugging)
+###### [Part 3](debugging) | [part 5](part5)
 Gem5 uses Garnet for on-chip interconnects. The details are published in ISPASS 2009.
 In Gem5, you can run Garnet as a stand alone to test you Network-on-chip design using synthatic traffic patterns and this will be our focus here.
 
