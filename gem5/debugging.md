@@ -20,9 +20,19 @@ DPRINTF(newFlag, "print Message\n");
 ```
 build/X86/gem5.opt --debug-flags=newFlag configs/configration.py 
 ```
-## Gem5 debugging output
+## DPRINTF output
+ The output for each, say DPRINTF(NewFlag, "Message") is as follows:
+ ```
+  [current clock cycle: Object_id: Message]
+ ```
 
-
-# `assert` and `printf` 
-
-# `gdp` 
+# Other General debugging techiques
+## assert and printf
+Assert is a great statement for debugging. You can add it any where to validate the state of your variables or some conndition to be hold. It takes as an input an expression and will do nothing if the expression evalutes to true, otherwise, the program will then terminate abnormally, with no clean-up. Most importantly, it will output the exact location (filename and line number) of the assert statement that took false expression. This is a great why to assure correctness of your code. 
+# gdp
+[gdb](https://www.gnu.org/software/gdb/) or GNU Project Debugger is also very usefull. Especailly for segmantation faults. 
+To use gdb 
+```
+gdb ./build/NULL/gem5.debug
+run configs/configuration.py
+```
