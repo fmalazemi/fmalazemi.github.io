@@ -29,6 +29,7 @@ Garnet source files are located in
 ```
 src/mem/ruby/network/garnet2.0
 ```
-
-### Configuration file 
-
+Topologies are implemented in 
+```
+src/mem/ruby/network/topology.cc
+```
