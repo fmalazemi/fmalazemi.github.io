@@ -1,13 +1,8 @@
 # Part 3: Debugging Gem5
 Gem5 includes debugging support to print messages according to a specific flag (for all debugging options click [here](http://learning.gem5.org/book/part2/debugging.html#debug-output). You can define as many flags as you want. 
 
-## Run with debug flag `f`
-```
-build/X86/gem5.debug --debug-flags=f configs/configration.py 
-```
-
-## Add a new debugging flag `newFlag`
-Let use say, you want to use `newFlag` in `src/temp/temp.cc`, 2 steps are required:  
+## Add a new debugging flag "newFlag"
+Let use say, you want to use "newFlag" in src/temp/temp.cc, 2 steps are required:  
 1. Add the following include statement to `temp.cc`
 ```
 #include "debug/newFlag.hh"
