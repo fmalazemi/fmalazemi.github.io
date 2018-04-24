@@ -7,6 +7,7 @@ In Gem5, you can run Garnet as a stand alone to test you Network-on-chip design 
 scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
 ```
 ### Run 
+Gem5 comes with a ready configuration file "configs/example/garnet_synth_traffic.py" to run Garnet as a stand alone. 
 ```
 ./build/NULL/gem5.debug configs/example/garnet_synth_traffic.py  --network=garnet2.0 [--option=value]
 ```
@@ -29,4 +30,5 @@ Garnet source files are located in
 src/mem/ruby/network/garnet2.0
 ```
 
+### Configuration file 
 
