@@ -8,13 +8,6 @@ scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
 ```
 ## Run 
 ```
-./build/NULL/gem5.debug configs/example/garnet_synth_traffic.py  \
---num-cpus=16 \
---num-dirs=16 \
---network=garnet2.0 \
---topology=Mesh_XY \
---mesh-rows=4  \
---sim-cycles=1000 \
---synthetic=uniform_random \
---injectionrate=0.01
+./build/NULL/gem5.debug configs/example/garnet_synth_traffic.py  [--option=value]
 ```
+## Options and parameters
