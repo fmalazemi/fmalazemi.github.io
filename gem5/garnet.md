@@ -21,6 +21,8 @@ We will briefly explain some of the options here, the full list can be found [he
 * `--sim-cycles`  The number of cycles to run the simulator.
 * `--synthetic` Traffic pattern type. 
 * `--injectionrate` Injection rate for each node per cycle. 
+
+
 ### Source files
 Garnet source files are located in 
 ```
