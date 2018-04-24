@@ -3,7 +3,7 @@ Gem5 includes debugging support to print messages according to a specific flag (
 
 ## Add a new debugging flag "newFlag"
 Let use say, you want to use "newFlag" in src/temp/temp.cc, 2 steps are required:  
-1. Add the following include statement to `temp.cc`
+1. Add the following include statement to temp.cc
 ```
 #include "debug/newFlag.hh"
 ```
@@ -16,7 +16,7 @@ Now you can use Gem5 debugging prints in temp.cc by adding the following any whe
 DPRINTF(newFlag, "print Message\n");
 ```
 
-## Run Gem5 with debugging flag `newFlag` 
+## Run Gem5 with debugging flag "newFlag"
 ```
 build/X86/gem5.opt --debug-flags=newFlag configs/configration.py 
 ```
