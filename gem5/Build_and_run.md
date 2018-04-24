@@ -21,20 +21,10 @@ I advise you to play with it.
 The following is an example file 
 ```
 Import('*')
-
 if env['PROTOCOL'] == 'None':
     Return()
-
-SimObject('BasicLink.py')
-SimObject('BasicRouter.py')
-SimObject('MessageBuffer.py')
-SimObject('Network.py')
-
-Source('BasicLink.cc')
-Source('BasicRouter.cc')
-Source('MessageBuffer.cc')
-Source('Network.cc')
-Source('Topology.cc')
+SimObject('s.py')
+Source('x.cc')
 ```
 
 To add C++ file, append with file with `Source('file.cc')`. Similarly, for SimObject add `SimObject('file.py')`.
