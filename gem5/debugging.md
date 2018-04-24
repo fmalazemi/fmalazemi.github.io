@@ -7,7 +7,7 @@ Let use say, you want to use "newFlag" in src/temp/temp.cc, 2 steps are required
 ```
 #include "debug/newFlag.hh"
 ```
-2. Register the new flag `newFlag` in `src/temp/sconscript` by adding the following:
+2. Register the new flag "newFlag" in src/temp/sconscript by adding the following:
 ```
 DebugFlag('Hello')
 ```
