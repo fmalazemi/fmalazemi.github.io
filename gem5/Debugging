@@ -1,5 +1,5 @@
 # Part 3: Debugging Gem5
-Gem5 includes debugging support to print messages according to a specific flag. You can define as many flags as you want. 
+Gem5 includes debugging support to print messages according to a specific flag (for all debugging options click [here](http://learning.gem5.org/book/part2/debugging.html#debug-output). You can define as many flags as you want. 
 
 ## Run with debug flag `f`
 ```
@@ -21,11 +21,12 @@ Now you can use Gem5 debugging prints in temp.cc by adding the following any whe
 DPRINTF(newFlag, "print Message\n");
 ```
 
-## Run Gem5 with debugging flag `f` 
+## Run Gem5 with debugging flag `newFlag` 
 ```
-build/X86/gem5.opt --debug-flags=DRAM configs/configration.py 
+build/X86/gem5.opt --debug-flags=newFlag configs/configration.py 
 ```
-This 
+## Gem5 debugging output
+
 
 # `assert` and `printf` 
 
