@@ -21,3 +21,8 @@ We will briefly explain some of the options here, the full list can be found [he
 * `--sim-cycles`  The number of cycles to run the simulator.
 * `--synthetic` Traffic pattern type. 
 * `--injectionrate` Injection rate for each node per cycle. 
+### Garnet Source files
+Most of garnet source files are found in 
+```
+src/mem/ruby/network/garnet2.0
+```
