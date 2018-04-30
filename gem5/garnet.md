@@ -35,3 +35,15 @@ Topologies are implemented in
 ```
 src/mem/ruby/network/topology.cc
 ```
+Configuration File. It also includes some of options related to running garnet as a stand alone (e.g. `--sim-cycles`, `--synthetic`, `--injectionrate`, ... etc.) 
+```
+configs/example/garnet_synth_traffic.py
+```
+Option related to Network (e.g. `--topology`, `--network`, `--link-latency`, ... etc.)
+```
+configs/network/Network.py
+```
+Common Options (e.g. `--num-cpu`, `--num-dir`, ... etc.)
+```
+gem5/configs/common/Options.py
+```
