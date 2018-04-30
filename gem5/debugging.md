@@ -1,4 +1,5 @@
 # Part 3: Debugging Gem5
+#### [Part 2](part2.md) | [Part 4](part4.md) 
 Gem5 includes debugging support to print messages according to a specific flag (for all debugging options click [here](http://learning.gem5.org/book/part2/debugging.html#debug-output). You can define as many flags as you want. 
 
 ## Add a new debugging flag "newFlag"
