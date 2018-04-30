@@ -1,12 +1,13 @@
 # Part 4: Garnet 
 ###### [Part 3](debugging) | [part 5](part5)
-Gem5 uses Garnet for on-chip interconnects. The details are published in ISPASS 2009.
+Gem5 uses Garnet for on-chip interconnects. The details are published in [ISPASS 2009](https://ieeexplore.ieee.org/document/4919636/).
 In Gem5, you can run Garnet as a stand alone to test you Network-on-chip design using synthatic traffic patterns and this will be our focus here.
 
 ### Build Garnet as a stand alone
 ```
 scons build/NULL/gem5.debug PROTOCOL=Garnet_standalone
 ```
+Notice that, the ISA model here is chosen to be NULL. This will run Garnet as a stand alone with no processor model. Traffic are to be generated synthatically. 
 ### Run 
 Gem5 comes with a ready configuration file "configs/example/garnet_synth_traffic.py" to run Garnet as a stand alone. 
 ```
