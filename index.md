@@ -1,4 +1,4 @@
-# Part 1: What is Gem5
+# What is Gem5
 ###### Main | [Build and run](part2) | [Debugging](part3) | [Garnet](part4) | [Resources](part5)
 GEM5 is a simulator dedicated for computer architecture research communities. It  encompasses system and process level microarchitecture. 
 ## Credit 
