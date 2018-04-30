@@ -1,5 +1,5 @@
 # Part 2: Build and Run
-###### [Part 1](index) | [part 3](debuggin)
+###### [Main](index) | build and Run | [Debugging](part3) | [Garnet](part4) | [Resources](part5)
 ## Compile & Build
 To compile and build Gem5 issue the scons command with the following parameter `<build_dir>/<Configuration>/<target>`. For example, 
 ```
