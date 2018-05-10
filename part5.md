@@ -6,7 +6,7 @@
 * [Gem5 Tutorial Book](http://learning.gem5.org/book/index.html)
 * [Quick Garnet2.0 Tutorial](http://synergy.ece.gatech.edu/wp-content/uploads/sites/332/2017/09/Garnet2.0-Tutorial_gem5-workshop_ARM-Rsh-Summit2017.pdf)
 * [Detailed Garnet Tutorial](http://tusharkrishna.ece.gatech.edu/teaching/icn_s17/)
-* STAR Lab Tutorial: [Download and Build](https://www.youtube.com/watch?v=GgmAoQ4MG24&t=4s), [Run Garnet as a stand-alone](https://www.youtube.com/watch?v=LOyZxr70VR4&t=30s), 
+* STAR Lab Video Tutorial: [Download and Build](https://www.youtube.com/watch?v=GgmAoQ4MG24&t=4s), [Run Garnet as a stand-alone](https://www.youtube.com/watch?v=LOyZxr70VR4&t=30s), 
 ### Documentation & Papers
 * [Official Gem5 Docs](http://www.gem5.org/docs/html/index.html)
 * [The gem5 simulator](https://dl.acm.org/citation.cfm?doid=2024716.2024718)
