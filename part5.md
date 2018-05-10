@@ -2,7 +2,7 @@
 ###### [Main](index) | [build and run](part2) | [Debugging](part3) | [Garnet](part4) | Resources
 
 ### Tutorials
-* Learning Gem5: [Part 1](https://www.youtube.com/watch?v=5UT41VsGTsg), [Part 2]((https://www.youtube.com/watch?v=Sn8aMIovhfQ&list=PL-J9GXT0E7AIidmX_DW7pooRJzjoaJtix&index=2)), [Part 3](https://www.youtube.com/watch?v=0p9Utz3_uv4&list=PL-J9GXT0E7AIidmX_DW7pooRJzjoaJtix&index=3), [Part 4](https://www.youtube.com/watch?v=WWdm8c9GR1s)
+* Learning Gem5: [Part 1](https://www.youtube.com/watch?v=5UT41VsGTsg), [Part 2](https://www.youtube.com/watch?v=Sn8aMIovhfQ&list=PL-J9GXT0E7AIidmX_DW7pooRJzjoaJtix&index=2), [Part 3](https://www.youtube.com/watch?v=0p9Utz3_uv4&list=PL-J9GXT0E7AIidmX_DW7pooRJzjoaJtix&index=3), [Part 4](https://www.youtube.com/watch?v=WWdm8c9GR1s)
 * [Gem5 Tutorial Book](http://learning.gem5.org/book/index.html)
 * [Quick Garnet2.0 Tutorial](http://synergy.ece.gatech.edu/wp-content/uploads/sites/332/2017/09/Garnet2.0-Tutorial_gem5-workshop_ARM-Rsh-Summit2017.pdf)
 * [Detailed Garnet Tutorial](http://tusharkrishna.ece.gatech.edu/teaching/icn_s17/)
