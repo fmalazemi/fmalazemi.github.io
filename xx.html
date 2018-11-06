@@ -27,13 +27,13 @@
 			height = itemSize*12 - margin.top - margin.bottom;
 
     
-	d3.csv('fmalazemi.github.io/data.csv', function ( response ) {
+	d3.csv('data.csv', function ( response ) {
 
 		var data = response.map(function( item ) {
 				var newItem = {};
 				newItem.nodex = item.x;
 				newItem.nodey = item.y;
-				newItem.value = item.distance;
+				newItem.value = item.value;
 
 				return newItem;
 		})
@@ -64,8 +64,8 @@
 				.orient("left");
 
 		var colorScale = d3.scale.threshold()
-				.domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18, 19, 20,21,22,23,24, 25])
-				.range(['222222','222222','#ffffe0','#fff4cb','#ffeab8','#ffdea7','#ffd399','#ffc78c','#ffba81','#ffae79','#ffa071','#ff926b','#fb8567','#f77963','#f16d5f','#ec615b','#e55658','#de4952','#d63e4d','#cd3346','#c4273e','#ba1c36','#af122c','#a40820','#980213','#8b0000']);
+				.domain([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18, 19, 20])
+				.range(['222222','222222','#ffffe0','#fff1c6','#ffe3af','#ffd59b','#ffc58a','#ffb57e','#ffa474','#ff926b','#fa8266','#f47461','#ed645c','#e55457','#db4551','#d13649','#c52940','#b81b34','#aa0e27','#9c0317','#8b0000']);
 
 		var svg = d3.select('.heatmap')
 				.append("svg")
@@ -80,10 +80,17 @@
 				.attr('class', 'cell')
 				.attr('width', cellSize)
 				.attr('height', cellSize)
-				.attr('y', function(d) { return yScale(d.nodex); })
-				.attr('x', function(d) { return xScale(d.nodey); })
-				.attr('fill', function(d) { console.log(d.nodex+", "+d.nodey+", "+d.value+", "+colorScale(d.value)); return colorScale(d.value); });
-
+				.attr('y', function(d) { return xScale(d.nodex); })
+				.attr('x', function(d) { return yScale(d.nodey); })
+				.attr('fill', function(d) { console.log(d.nodex+", "+d.nodey+", "+d.value+", "+colorScale(d.value)); return colorScale(d.value); })
+		svg.selectAll("text").data(data).enter().append("text")
+				.attr('y', function(d) { return xScale(d.nodex); })
+				.attr('x', function(d) { return yScale(d.nodey); })
+				.attr("dx", itemSize/2)
+				.attr("dy",itemSize/2)
+				.attr("fill", "black")
+				.text(function(d) { return d.value; });;
+		
 		svg.append("g")
 				.attr("class", "y axis")
 				.call(yAxis)
