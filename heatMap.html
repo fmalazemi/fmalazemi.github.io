@@ -11,6 +11,19 @@
 	.axis text {
 			font-family: sans-serif;
 			font-size: 11px;
+			-webkit-user-select: none;
+			   -moz-user-select: none;
+				-ms-user-select: none;
+					user-select: none;
+	}
+	.svg text {
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+			-ms-user-select: none;
+				user-select: none;
+	}
+	.svg text::selection {
+		background: none;
 	}
 </style>
 
@@ -28,7 +41,7 @@
 	var file = 'data.csv'
 	
 	function handleMouseClick(d, i){
-		file = 'fmalazemi.github.io/data.csv'
+		file = 'data2.csv'
 		d3.select('.heatmap').selectAll('svg').remove();
 		heatMap(file)
 	}
