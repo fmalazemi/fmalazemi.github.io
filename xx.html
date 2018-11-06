@@ -25,9 +25,9 @@
 			
 	var width = itemSize*12 - margin.right - margin.left,
 			height = itemSize*12 - margin.top - margin.bottom;
-
+	var file = 'data.csv'
     
-	d3.csv('data.csv', function ( response ) {
+	d3.csv(file, function ( response ) {
 
 		var data = response.map(function( item ) {
 				var newItem = {};
@@ -83,13 +83,9 @@
 				.attr('y', function(d) { return xScale(d.nodex); })
 				.attr('x', function(d) { return yScale(d.nodey); })
 				.attr('fill', function(d) { console.log(d.nodex+", "+d.nodey+", "+d.value+", "+colorScale(d.value)); return colorScale(d.value); })
-		svg.selectAll("text").data(data).enter().append("text")
-				.attr('y', function(d) { return xScale(d.nodex); })
-				.attr('x', function(d) { return yScale(d.nodey); })
-				.attr("dx", itemSize/2)
-				.attr("dy",itemSize/2)
-				.attr("fill", "black")
-				.text(function(d) { return d.value; });;
+				.on("mouseover", handleMouseOver )
+				.on("mouseout", handleMouseOut )
+				.on("click", handleMouseClick)
 		
 		svg.append("g")
 				.attr("class", "y axis")
@@ -105,5 +101,27 @@
 				//.attr("transform", function (d) {
 				//		return "rotate(-65)";
 				//});
+		function handleMouseOver(d, i) {  // Add interactivity
+								// Specify where to put label of text
+								svg.append("text").attr({
+									 id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+										x: function() { return xScale(d.nodey); },
+										y: function() { return yScale(d.nodex); }
+								}).attr("dy", itemSize/2)
+								.attr("dx", itemSize/2)
+								.text(function() {
+									return d.value;  // Value of the text
+								});
+							}
+		function handleMouseOut(d, i) {
+					// Use D3 to select element, change color back to normal
+
+					// Select text by id and then remove
+					d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+				}
+		function handleMouseClick(d, i){
+			file = 'data.csv'
+			location.reload();
+		}
 	});
 </script>
