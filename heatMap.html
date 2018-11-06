@@ -25,22 +25,36 @@
 			
 	var width = itemSize*12 - margin.right - margin.left,
 			height = itemSize*12 - margin.top - margin.bottom;
-	var file = 'fmalazemi.github.io/blob/master/data.csv'
-    
+	var file = 'data.csv'
+	
+	function handleMouseClick(d, i){
+		file = 'data2.csv'
+		d3.select('.heatmap').selectAll('svg').remove();
+		heatMap(file)
+	}
+
 	d3.csv(file, function ( response ) {
-
-		var data = response.map(function( item ) {
+		var rawData = response.map(function( item ) {
 				var newItem = {};
-				newItem.nodex = item.x;
-				newItem.nodey = item.y;
+				newItem.source = item.x;
+				newItem.nodex = Math.floor(item.y/8);
+				newItem.nodey = item.y%8;
 				newItem.value = item.value;
-
 				return newItem;
 		})
-		var x_elements = d3.set(data.map(function( item ) { return item.nodex; } )).values(),
-				y_elements = d3.set(data.map(function( item ) { return item.nodey; } )).values(),
-				value_elements = d3.set(data.map(function( item ) { return item.value; } )).values();
-
+		
+				
+		function setData(index){
+			d = new Array(64)
+			for(var i = 0; i < 64; i++){
+				d[i] = rawData[i + index*64]
+			}
+			return d
+		}
+		data = setData(0)
+		var x_elements = d3.set(data.map(function( item ) { return Math.floor(item.nodey); } )).values();
+		var y_elements = d3.set(data.map(function( item ) { return item.nodey; } )).values();
+		var value_elements = d3.set(data.map(function( item ) { return item.value; } )).values();
 		var xScale = d3.scale.ordinal()
 				.domain(x_elements)
 				.rangeBands([0, x_elements.length * itemSize]);
@@ -82,7 +96,7 @@
 				.attr('height', cellSize)
 				.attr('y', function(d) { return xScale(d.nodex); })
 				.attr('x', function(d) { return yScale(d.nodey); })
-				.attr('fill', function(d) { console.log(d.nodex+", "+d.nodey+", "+d.value+", "+colorScale(d.value)); return colorScale(d.value); })
+				.attr('fill', function(d) { return colorScale(d.value); })
 				.on("mouseover", handleMouseOver )
 				.on("mouseout", handleMouseOut )
 				.on("click", handleMouseClick)
@@ -107,7 +121,7 @@
 									 id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
 										x: function() { return xScale(d.nodey); },
 										y: function() { return yScale(d.nodex); }
-								}).attr("dy", itemSize/2)
+								}).attr("dy", cellSize/2)
 								.attr("dx", itemSize/2)
 								.text(function() {
 									return d.value;  // Value of the text
@@ -118,10 +132,28 @@
 
 					// Select text by id and then remove
 					d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
-				}
-		function handleMouseClick(d, i){
-			file = 'data.csv'
-			location.reload();
 		}
+		function handleMouseClick(d, i){
+			
+			clickedNode = d.nodex*8 + d.nodey
+			data = setData(clickedNode)
+			console.log(data[0])
+			svg.selectAll('rect').remove()	
+			svg.selectAll('rect')
+							.data(data)
+							.enter().append('g').append('rect')
+							.attr('class', 'cell')
+							.attr('width', cellSize)
+							.attr('height', cellSize)
+							.attr('y', function(d) { return xScale(d.nodex); })
+							.attr('x', function(d) { return yScale(d.nodey); })
+							.attr('fill', function(d) { return colorScale(d.value); })
+							.on("mouseover", handleMouseOver )
+							.on("mouseout", handleMouseOut )
+							.on("click", handleMouseClick)
+			
+		}
+
 	});
+
 </script>
