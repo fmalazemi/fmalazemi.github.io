@@ -50,8 +50,8 @@
 		<option value="4x4_RL.csv">RL: 4x4</option>
 		<option value="4x4_Mesh.csv">Mesh: 4x4</option>
 		<option value="4x4_IMR.csv">IMR: 4x4</option>
-		<option value="16x16_RL.csv">RL: 4x4</option>
-		<option value="16x16_Mesh.csv">Mesh: 4x4</option>
+		<option value="16x16_RL.csv">RL: 16x16</option>
+		<option value="16x16_Mesh.csv">Mesh: 16x16</option>
 
 </select>
 <div class="heatmap"></div>
@@ -62,15 +62,9 @@
 		cellSize = itemSize - 1,
 		margin = {top: 20, right: 20, bottom: 20, left: 20};
 	
-	var width = itemSize*12 - margin.right - margin.left,
-		height = itemSize*12 - margin.top - margin.bottom;
-	var file = 'data.csv'
-	var datasets = ["data.csv"]
-	function handleMouseClick(d, i){
-		file = 'data2.csv'
-		d3.select('.heatmap').selectAll('svg').remove();
-		heatMap(file)
-	}
+	var width = itemSize*20 - margin.right - margin.left,
+		height = itemSize*20 - margin.top - margin.bottom;
+
 	function heatMap(file){
 	d3.csv(file, function ( response ) {
 		var rawData = response.map(function( item ) {
@@ -187,7 +181,7 @@
 		}
 		function handleMouseClick(d, i){
 			d3.select("#t" + d.nodex + "-" + d.nodey + "-" + i).remove();
-			clickedNode = d.nodex*8 + d.nodey
+			clickedNode = d.nodex*N + d.nodey
 			data = setData(clickedNode)
 			console.log(clickedNode+" <--- "+d.nodex+", "+d.nodey)
 			svg.selectAll('rect').remove();
@@ -222,13 +216,17 @@
 
 	});
 	}
-	heatMap(datasets[0])
+	heatMap("8x8_RL.csv")
 
     d3.select('#inds')
 		.on("change", function () {
 			var sect = document.getElementById("inds");
 			var section = sect.options[sect.selectedIndex].value;
-			console.log(section)
+
+			d3.selectAll('svg').remove()
+			N = +parseInt(section)
+			heatMap(section)
+
 
 		});
 	//var buttonNames = ["button 1", "button 2", "button 3", "button 4"]
