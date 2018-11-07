@@ -41,7 +41,7 @@
 	
 </style>
 
-<div class="heatmap"></div>
+
 
 <script src="//d3js.org/d3.v3.min.js"></script>
 <select id="inds">
@@ -54,6 +54,7 @@
 		<option value="16x16_Mesh.csv">Mesh: 4x4</option>
 
 </select>
+<div class="heatmap"></div>
 <script>
 
 	var N = 8; //NoC Size
@@ -70,7 +71,7 @@
 		d3.select('.heatmap').selectAll('svg').remove();
 		heatMap(file)
 	}
-
+	function heatMap(file){
 	d3.csv(file, function ( response ) {
 		var rawData = response.map(function( item ) {
 				var newItem = {};
@@ -220,7 +221,8 @@
 		}
 
 	});
-	
+	}
+	heatMap(datasets[0])
 
     d3.select('#inds')
 		.on("change", function () {
