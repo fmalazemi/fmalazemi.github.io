@@ -25,6 +25,16 @@
 	.svg text::selection {
 		background: none;
 	}
+	text {
+		-webkit-touch-callout: none; /* iOS Safari */
+			-webkit-user-select: none; /* Safari */
+			 -khtml-user-select: none; /* Konqueror HTML */
+				 -moz-user-select: none; /* Firefox */
+					-ms-user-select: none; /* Internet Explorer/Edge */
+							user-select: none; /* Non-prefixed version, currently
+																		supported by Chrome and Opera */
+	}
+	
 </style>
 
 <div class="heatmap"></div>
@@ -32,10 +42,12 @@
 <script src="//d3js.org/d3.v3.min.js"></script>
 
 <script>
+
+	var N = 8; //NoC Size
 	var itemSize = 50,
-			cellSize = itemSize - 1,
-			margin = {top: 120, right: 20, bottom: 20, left: 110};
-			
+		cellSize = itemSize - 1,
+		margin = {top: 120, right: 20, bottom: 20, left: 110};
+	
 	var width = itemSize*12 - margin.right - margin.left,
 			height = itemSize*12 - margin.top - margin.bottom;
 	var file = 'data.csv'
@@ -50,17 +62,17 @@
 		var rawData = response.map(function( item ) {
 				var newItem = {};
 				newItem.source = item.x;
-				newItem.nodex = Math.floor(item.y/8);
-				newItem.nodey = item.y%8;
+				newItem.nodex = Math.floor(item.y/N);
+				newItem.nodey = item.y%N;
 				newItem.value = item.value;
 				return newItem;
 		})
 		
 				
 		function setData(index){
-			d = new Array(64)
-			for(var i = 0; i < 64; i++){
-				d[i] = rawData[i + index*64]
+			d = new Array(N*N)
+			for(var i = 0; i < N*N; i++){
+				d[i] = rawData[i + index*N*N]
 			}
 			return d
 		}
@@ -113,6 +125,13 @@
 				.on("mouseover", handleMouseOver )
 				.on("mouseout", handleMouseOut )
 				.on("click", handleMouseClick)
+		svg.append("rect").attr('class', 'cell')
+			.attr('width', cellSize)
+			.attr('height', cellSize)
+			.attr('y', xScale(0))
+			.attr('x', yScale(0))
+			.attr('fill', function(d) { return "#ffffff"; })
+			
 		
 		svg.append("g")
 				.attr("class", "y axis")
@@ -131,7 +150,7 @@
 		function handleMouseOver(d, i) {  // Add interactivity
 								// Specify where to put label of text
 								svg.append("text").attr({
-									 id: "t" + d.x + "-" + d.y + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
+									 id: "t" + d.nodex + "-" + d.nodey + "-" + i,  // Create an id for text so we can select it later for removing on mouseout
 										x: function() { return xScale(d.nodey); },
 										y: function() { return yScale(d.nodex); }
 								}).attr("dy", cellSize/2)
@@ -142,31 +161,52 @@
 							}
 		function handleMouseOut(d, i) {
 					// Use D3 to select element, change color back to normal
-
 					// Select text by id and then remove
-					d3.select("#t" + d.x + "-" + d.y + "-" + i).remove();  // Remove text location
+					d3.select("#t" + d.nodex + "-" + d.nodey + "-" + i).remove();  // Remove text location
 		}
 		function handleMouseClick(d, i){
-			
+			d3.select("#t" + d.nodex + "-" + d.nodey + "-" + i).remove();
 			clickedNode = d.nodex*8 + d.nodey
 			data = setData(clickedNode)
-			console.log(data[0])
-			svg.selectAll('rect').remove()	
+			console.log(clickedNode+" <--- "+d.nodex+", "+d.nodey)
+			svg.selectAll('rect').remove();
 			svg.selectAll('rect')
-							.data(data)
-							.enter().append('g').append('rect')
-							.attr('class', 'cell')
-							.attr('width', cellSize)
-							.attr('height', cellSize)
-							.attr('y', function(d) { return xScale(d.nodex); })
-							.attr('x', function(d) { return yScale(d.nodey); })
-							.attr('fill', function(d) { return colorScale(d.value); })
-							.on("mouseover", handleMouseOver )
-							.on("mouseout", handleMouseOut )
-							.on("click", handleMouseClick)
-			
+				.data(data)
+				.enter().append('g').append('rect')
+				.attr('class', 'cell')
+				.attr('width', cellSize)
+				.attr('height', cellSize)
+				.attr('y', function(d) { return xScale(d.nodex); })
+				.attr('x', function(d) { return yScale(d.nodey); })
+				.attr('fill', function(d) { return colorScale(d.value); })
+				.on("mouseover", handleMouseOver )
+				.on("mouseout", handleMouseOut )
+				.on("click", handleMouseClick)
+		svg.append("rect").attr('class', 'cell')
+		.attr('width', cellSize)
+		.attr('height', cellSize)
+		.attr('y', xScale(d.nodex))
+		.attr('x', yScale(d.nodey))
+		.attr('fill', function(d) { return "#ffffff"; })
+		console.log(d.nodex+", "+d.nodey)
+
+
 		}
 
 	});
+	
+	var datasetpicker = d3.select("#dataset-picker").selectAll(".dataset-button")
+					.data(datasets);
+
+				datasetpicker.enter()
+					.append("input")
+					.attr("value", function(d){ return "Dataset " + d })
+					.attr("type", "button")
+					.attr("class", "dataset-button")
+					.on("click", function(d) {
+						heatmapChart(d);
+					});
 
 </script>
+  </body>
+</html>
